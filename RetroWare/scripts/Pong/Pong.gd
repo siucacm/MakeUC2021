@@ -2,6 +2,8 @@ extends Node2D
 
 signal game_finished(didWin)
 
+export(int) var game_duration = 10
+
 const ball_factory = preload("res://Scenes/Pong/Ball.tscn")
 
 # Declare member variables here. Examples:
@@ -29,6 +31,6 @@ func _on_SpawnTimer_timeout():
 	add_child(ball)
 
 
-func _on_EndTimer_timeout():
+func _on_Timer_on_timeout():
 	print("You won")
 	emit_signal("game_finished", true)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Pong/PaddleMovement.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Pong/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Timer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Pong/Goal.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Pong/Pong.gd" type="Script" id=6]
 
@@ -53,6 +54,9 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="Timer" parent="." instance=ExtResource( 3 )]
+
 [connection signal="on_score" from="LeftWall" to="." method="_on_LeftWall_on_score"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="on_timeout" from="Timer" to="." method="_on_Timer_on_timeout"]
