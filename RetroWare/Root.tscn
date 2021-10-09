@@ -5,10 +5,10 @@
 [ext_resource path="res://scripts/BallMovement.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Png/Wall.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 25, 125 )
 
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=2]
 flags = 4
 load_path = "res://.import/paddle.png-1d2a28e983477361da92398ef0d5efd1.stex"
 
@@ -25,10 +25,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Paddle"]
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 
 [node name="Ball" type="KinematicBody2D" parent="."]
 position = Vector2( 749.421, 337.409 )
