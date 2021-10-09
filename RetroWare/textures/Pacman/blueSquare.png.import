@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pacmanIcon.png-52de7b52d2b00737ac42d1d500c86825.stex"
+path="res://.import/blueSquare.png-ffbd3aeef02b58ca16a5babe88ab1767.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/pacmanIcon.png"
-dest_files=[ "res://.import/pacmanIcon.png-52de7b52d2b00737ac42d1d500c86825.stex" ]
+source_file="res://textures/Pacman/blueSquare.png"
+dest_files=[ "res://.import/blueSquare.png-ffbd3aeef02b58ca16a5babe88ab1767.stex" ]
 
 [params]
 
