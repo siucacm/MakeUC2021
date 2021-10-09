@@ -22,7 +22,6 @@ func _ready():
 #	pass
 
 func _on_LeftWall_on_score():
-	print("You Lose :(")
 	emit_signal("game_finished", false)
 
 
@@ -32,5 +31,4 @@ func _on_SpawnTimer_timeout():
 
 
 func _on_Timer_on_timeout():
-	print("You won")
 	emit_signal("game_finished", true)
