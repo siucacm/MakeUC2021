@@ -1,24 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/AsteriodsScripts/AsteriodMovement.gd" type="Script" id=1]
 [ext_resource path="res://textures/Asteriods/blackSquare.png" type="Texture" id=2]
+[ext_resource path="res://textures/Asteriods/ShipStill.png" type="Texture" id=3]
 [ext_resource path="res://textures/Asteriods/Asteriod3shots.png" type="Texture" id=4]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 87.4396
+[ext_resource path="res://scripts/AsteriodsScripts/Ship.gd" type="Script" id=5]
+[ext_resource path="res://textures/Asteriods/AsteroidsBullets.jpeg" type="Texture" id=6]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
 show_behind_parent = true
 light_mask = 4097
-position = Vector2( 8051.96, 14706.7 )
+position = Vector2( 8014.37, 15047.4 )
 rotation = -0.0136027
 scale = Vector2( 146.556, 122.339 )
 texture = ExtResource( 2 )
 
 [node name="Asteriod" type="RigidBody2D" parent="."]
-position = Vector2( 128.448, 121.003 )
+position = Vector2( 209.566, 243.304 )
 gravity_scale = 0.0
 linear_velocity = Vector2( 100, 20 )
 linear_damp = 0.0
@@ -32,11 +32,11 @@ position = Vector2( 25, 30 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
-[node name="Collider" type="CollisionShape2D" parent="Asteriod"]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Asteriod"]
+polygon = PoolVector2Array( -40.3513, -77.1712, 38.0183, -78.1388, 68.9792, -49.113, 81.557, 50.5423, 48.6611, 82.4707, 5.12242, 61.1851, -47.124, 89.2433, -87.7601, 56.3474, -58.7343, 6.03605, -79.0524, -41.3728 )
 
 [node name="Asteriod2" type="RigidBody2D" parent="."]
-position = Vector2( 579.891, 198.204 )
+position = Vector2( 919.225, 492.525 )
 gravity_scale = 0.0
 linear_velocity = Vector2( -100, 50 )
 linear_damp = 0.0
@@ -50,5 +50,30 @@ position = Vector2( 25, 30 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
-[node name="Collider" type="CollisionShape2D" parent="Asteriod2"]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Asteriod2"]
+polygon = PoolVector2Array( -39.959, -78.7114, 36.4755, -78.7114, 68.4039, -48.7181, 79.0467, 49.0021, 48.0859, 84.8006, 10.3523, 63.515, -44.7967, 86.7356, -90.2704, 56.7423, -56.407, 7.39844, -78.6602, -38.0753 )
+
+[node name="Ship" type="RigidBody2D" parent="."]
+position = Vector2( 474.423, 471.173 )
+rotation = -0.0136027
+scale = Vector2( 150, 150 )
+mass = 0.5
+gravity_scale = 0.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ship"]
+position = Vector2( 0, -0.01 )
+rotation = 0.0162949
+scale = Vector2( 0.0204708, 0.0245213 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ship"]
+polygon = PoolVector2Array( 0.00883862, -0.747257, 0.155097, -0.254498, -0.168538, -0.243954 )
+
+[node name="AsteroidsBullets" type="Sprite" parent="."]
+rotation = -1.24176e-09
+scale = Vector2( 3, 3.00009 )
+texture = ExtResource( 6 )

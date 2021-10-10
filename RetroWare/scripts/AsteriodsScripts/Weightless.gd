@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-onready var sprite = get_node("asteroids3shots")
+onready var sprite = get_node("Sprite")
 onready var viewport = get_viewport().get_visible_rect().size
 
 func _integrate_forces(state):
@@ -17,8 +17,3 @@ func _integrate_forces(state):
 		
 		state.set_transform(trans)
 	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
