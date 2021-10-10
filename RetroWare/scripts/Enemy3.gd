@@ -1,8 +1,8 @@
 extends KinematicBody2D
-export var speed = 10
+export var speed = 5
 var screen_size
 var move = Vector2(speed, 0)
-var counter = 5
+var counter = 6
 signal dead
 
 func _ready():
@@ -21,5 +21,3 @@ func _on_Area2D_area_entered(area):
 	if counter == 0:
 		emit_signal("dead")
 		queue_free()
-		
-	

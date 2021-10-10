@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/download.png-eea46401d94a85403b39fa0735d414a5.stex"
+path="res://.import/download (1).png-35093e68af4d86ee54c414ce50fbd0a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/download.png"
-dest_files=[ "res://.import/download.png-eea46401d94a85403b39fa0735d414a5.stex" ]
+source_file="res://textures/SpaceInvaders/download (1).png"
+dest_files=[ "res://.import/download (1).png-35093e68af4d86ee54c414ce50fbd0a6.stex" ]
 
 [params]
 
