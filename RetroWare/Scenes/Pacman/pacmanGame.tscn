@@ -1,0 +1,281 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Pacman/coin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/Pacman/pacmanIcon.png" type="Texture" id=2]
+[ext_resource path="res://textures/Pacman/pacman1.png" type="Texture" id=3]
+[ext_resource path="res://textures/Pacman/pacman2.png" type="Texture" id=4]
+[ext_resource path="res://textures/Pacman/pacman3.png" type="Texture" id=5]
+[ext_resource path="res://textures/Pacman/blueSquare.png" type="Texture" id=6]
+[ext_resource path="res://textures/Pacman/blackSquare.png" type="Texture" id=7]
+[ext_resource path="res://scripts/Pacman/pacmanMovement.gd" type="Script" id=8]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 64, 32, 32, 64, 0, 32, 32, 0, 32, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "blackSquare.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "blueSquare.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 1 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "blueSquare.png 2"
+2/texture = ExtResource( 6 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 160, 32, 32, 32 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 32, 32 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 47.768, 50.3326 )
+
+[node name="pacmanGame" type="Node2D"]
+position = Vector2( 253.756, 39.307 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+show_collision = true
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, 65535, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 0, 0, 131071, 0, 0, 65536, 1, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 1, 0, 65547, 0, 0, 196607, 0, 0, 131072, 1, 0, 131073, 0, 0, 131074, 1, 0, 131075, 1, 0, 131076, 0, 0, 131077, 1, 0, 131078, 0, 0, 131079, 1, 0, 131080, 1, 0, 131081, 0, 0, 131082, 1, 0, 131083, 0, 0, 262143, 0, 0, 196608, 1, 0, 196609, 0, 0, 196610, 1, 0, 196611, 1, 0, 196612, 0, 0, 196613, 1, 0, 196614, 0, 0, 196615, 1, 0, 196616, 1, 0, 196617, 0, 0, 196618, 1, 0, 196619, 0, 0, 327679, 0, 0, 262144, 1, 0, 262145, 0, 0, 262146, 1, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 1, 0, 262153, 0, 0, 262154, 1, 0, 262155, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 1, 0, 327683, 0, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 0, 0, 327688, 1, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 458751, 0, 0, 393216, 1, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 1, 0, 393221, 0, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 1, 0, 393227, 0, 0, 524287, 0, 0, 458752, 1, 0, 458753, 0, 0, 458754, 1, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 1, 0, 458761, 0, 0, 458762, 1, 0, 458763, 0, 0, 589823, 0, 0, 524288, 1, 0, 524289, 0, 0, 524290, 1, 0, 524291, 0, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 0, 0, 524296, 1, 0, 524297, 0, 0, 524298, 1, 0, 524299, 0, 0, 655359, 0, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 1, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 1, 0, 589835, 0, 0, 720895, 0, 0, 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pacman" type="KinematicBody2D" parent="."]
+position = Vector2( 30.3937, 350.372 )
+scale = Vector2( 1.15, 1.15 )
+script = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="pacman"]
+scale = Vector2( 0.2, 0.2 )
+frames = SubResource( 3 )
+frame = 3
+speed_scale = 1.5
+playing = true
+
+[node name="Area2D" type="Area2D" parent="pacman"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pacman/Area2D"]
+position = Vector2( -16.5629, 0 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pacman"]
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="Sprite" type="Sprite" parent="pacman"]
+visible = false
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="coin" parent="." instance=ExtResource( 1 )]
+position = Vector2( 7.34656, 3.60791 )
+
+[node name="coin2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5.7973, 67.7337 )
+
+[node name="coin3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 6.01318, 130.408 )
+
+[node name="coin4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 6.95444, 193.233 )
+
+[node name="coin5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 9.62109, 254.566 )
+
+[node name="coin6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 70.9544, 254.566 )
+
+[node name="coin7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136.288, 254.566 )
+
+[node name="coin8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 194.954, 255.9 )
+
+[node name="coin9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136.288, 194.566 )
+
+[node name="coin10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 137.621, 131.9 )
+
+[node name="coin11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 201.621, 130.566 )
+
+[node name="coin12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 261.621, 130.566 )
+
+[node name="coin13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 328.288, 130.566 )
+
+[node name="coin14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 389.621, 131.9 )
+
+[node name="coin15" parent="." instance=ExtResource( 1 )]
+position = Vector2( 392.288, 193.233 )
+
+[node name="coin16" parent="." instance=ExtResource( 1 )]
+position = Vector2( 390.955, 251.9 )
+
+[node name="coin17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 326.955, 254.566 )
+
+[node name="coin18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 452.288, 255.9 )
+
+[node name="coin19" parent="." instance=ExtResource( 1 )]
+position = Vector2( 513.621, 255.9 )
+
+[node name="coin20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 514.955, 195.9 )
+
+[node name="coin21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 514.955, 126.566 )
+
+[node name="coin22" parent="." instance=ExtResource( 1 )]
+position = Vector2( 516.288, 67.8998 )
+
+[node name="coin23" parent="." instance=ExtResource( 1 )]
+position = Vector2( 517.621, 5.23312 )
+
+[node name="coin24" parent="." instance=ExtResource( 1 )]
+position = Vector2( 518.955, -64.1002 )
+
+[node name="coin25" parent="." instance=ExtResource( 1 )]
+position = Vector2( 521.621, -129.434 )
+
+[node name="coin26" parent="." instance=ExtResource( 1 )]
+position = Vector2( 521.621, -196.1 )
+
+[node name="coin27" parent="." instance=ExtResource( 1 )]
+position = Vector2( 520.288, -257.434 )
+
+[node name="coin28" parent="." instance=ExtResource( 1 )]
+position = Vector2( 452.288, -260.1 )
+
+[node name="coin29" parent="." instance=ExtResource( 1 )]
+position = Vector2( 388.288, -258.767 )
+
+[node name="coin30" parent="." instance=ExtResource( 1 )]
+position = Vector2( 328.288, -254.767 )
+
+[node name="coin31" parent="." instance=ExtResource( 1 )]
+position = Vector2( 326.955, -189.434 )
+
+[node name="coin32" parent="." instance=ExtResource( 1 )]
+position = Vector2( 325.621, -130.767 )
+
+[node name="coin33" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200.288, -120.1 )
+
+[node name="coin34" parent="." instance=ExtResource( 1 )]
+position = Vector2( 198.955, -192.1 )
+
+[node name="coin35" parent="." instance=ExtResource( 1 )]
+position = Vector2( 198.955, -252.1 )
+
+[node name="coin36" parent="." instance=ExtResource( 1 )]
+position = Vector2( 137.621, -252.1 )
+
+[node name="coin37" parent="." instance=ExtResource( 1 )]
+position = Vector2( 73.6213, -253.434 )
+
+[node name="coin38" parent="." instance=ExtResource( 1 )]
+position = Vector2( 9.62134, -252.1 )
+
+[node name="coin39" parent="." instance=ExtResource( 1 )]
+position = Vector2( 6.95468, -190.767 )
+
+[node name="coin40" parent="." instance=ExtResource( 1 )]
+position = Vector2( 6.95468, -129.434 )
+
+[node name="coin41" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5.62134, -57.4337 )
+
+[node name="coin42" parent="." instance=ExtResource( 1 )]
+position = Vector2( 69.6213, 67.8997 )
+
+[node name="coin43" parent="." instance=ExtResource( 1 )]
+position = Vector2( 133.621, 67.8997 )
+
+[node name="coin44" parent="." instance=ExtResource( 1 )]
+position = Vector2( 134.955, 1.23299 )
+
+[node name="coin45" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136.288, -58.767 )
+
+[node name="coin46" parent="." instance=ExtResource( 1 )]
+position = Vector2( 198.955, -61.4337 )
+
+[node name="coin47" parent="." instance=ExtResource( 1 )]
+position = Vector2( 261.621, -62.767 )
+
+[node name="coin48" parent="." instance=ExtResource( 1 )]
+position = Vector2( 326.955, -61.4337 )
+
+[node name="coin49" parent="." instance=ExtResource( 1 )]
+position = Vector2( 388.288, -60.1003 )
+
+[node name="coin50" parent="." instance=ExtResource( 1 )]
+position = Vector2( 389.621, 3.89967 )
+
+[node name="coin51" parent="." instance=ExtResource( 1 )]
+position = Vector2( 389.621, 65.233 )
+
+[node name="coin52" parent="." instance=ExtResource( 1 )]
+position = Vector2( 454.955, 63.8997 )
