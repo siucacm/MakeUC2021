@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/AsteriodsScripts/AsteriodMovement.gd" type="Script" id=1]
+[ext_resource path="res://textures/Asteriods/blackSquare.png" type="Texture" id=2]
+[ext_resource path="res://textures/Asteriods/Asteriod3shots.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 87.4396
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 4097
+position = Vector2( 8051.96, 14706.7 )
+rotation = -0.0136027
+scale = Vector2( 146.556, 122.339 )
+texture = ExtResource( 2 )
+
+[node name="Asteriod" type="RigidBody2D" parent="."]
+position = Vector2( 128.448, 121.003 )
+gravity_scale = 0.0
+linear_velocity = Vector2( 100, 20 )
+linear_damp = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="asteroids3shots" type="Sprite" parent="Asteriod"]
+position = Vector2( 25, 30 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Collider" type="CollisionShape2D" parent="Asteriod"]
+shape = SubResource( 1 )
+
+[node name="Asteriod2" type="RigidBody2D" parent="."]
+position = Vector2( 579.891, 198.204 )
+gravity_scale = 0.0
+linear_velocity = Vector2( -100, 50 )
+linear_damp = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="asteroids3shots" type="Sprite" parent="Asteriod2"]
+position = Vector2( 25, 30 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Collider" type="CollisionShape2D" parent="Asteriod2"]
+shape = SubResource( 1 )
