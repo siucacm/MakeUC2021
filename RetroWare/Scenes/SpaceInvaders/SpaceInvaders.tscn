@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/SpaceInvaders/Enemy2.gd" type="Script" id=1]
 [ext_resource path="res://textures/SpaceInvaders/pixil-frame-0.png" type="Texture" id=2]
 [ext_resource path="res://textures/SpaceInvaders/Lose.png" type="Texture" id=3]
 [ext_resource path="res://scripts/SpaceInvaders/Enemy.gd" type="Script" id=4]
 [ext_resource path="res://scripts/SpaceInvaders/Win.gd" type="Script" id=5]
-[ext_resource path="res://textures/SpaceInvaders/download.png" type="Texture" id=6]
+[ext_resource path="res://textures/SpaceInvaders/pixil-frame-1.png" type="Texture" id=6]
 [ext_resource path="res://textures/SpaceInvaders/Win.png" type="Texture" id=7]
 [ext_resource path="res://scripts/SpaceInvaders/Lose.gd" type="Script" id=8]
-[ext_resource path="res://textures/SpaceInvaders/kisspng-space-invaders-video-game-computer-icons-space-invader-5b2db8bf2434a4.4760147715297230711483.jpg" type="Texture" id=9]
+[ext_resource path="res://textures/SpaceInvaders/pixil-frame-2.png" type="Texture" id=9]
 [ext_resource path="res://scripts/SpaceInvaders/Enemy3.gd" type="Script" id=10]
 [ext_resource path="res://textures/SpaceInvaders/istockphoto-1219022871-170667a.jpeg" type="Texture" id=11]
+[ext_resource path="res://textures/SpaceInvaders/pixil-frame-3.png" type="Texture" id=12]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody2D
@@ -23,6 +24,7 @@ var dead2 = false
 var dead3 = false
 signal win
 signal lose
+signal game_finished(didWin)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -49,8 +51,10 @@ func _process(delta):
 func _on_Timer_timeout():
 	if dead1 == true and dead2 == true and dead3 == true:
 		emit_signal(\"win\")
+		emit_signal(\"game_finished\", true)
 	else:
 		emit_signal(\"lose\")
+		emit_signal(\"game_finished\", false)
 	queue_free()
 	
 
@@ -75,8 +79,8 @@ position = Vector2( 530, 570 )
 script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
+position = Vector2( 0.707092, -23.3345 )
+texture = ExtResource( 12 )
 
 [node name="Position2D" type="Position2D" parent="Player"]
 position = Vector2( 0, -50 )
@@ -100,8 +104,8 @@ position = Vector2( 500, 200 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Enemy2"]
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 9 )
+scale = Vector2( 1.5, 1 )
+texture = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="Enemy2"]
 position = Vector2( 0, 0.707108 )
@@ -114,7 +118,7 @@ position = Vector2( 850, 350 )
 script = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="Enemy3"]
-scale = Vector2( 0.25, 0.25 )
+scale = Vector2( 1.5, 1 )
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 600, 350 )
 
