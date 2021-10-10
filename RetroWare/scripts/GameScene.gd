@@ -1,5 +1,6 @@
 extends Node2D
 
+export(int) var health = 3
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -17,13 +18,21 @@ func clear_game():
 
 func switch_scene(path):
 	clear_game()
+	show_health_scene()
 	var scene = load(path).instance()
 	scene.connect("game_finished", self, "_on_game_finished")
 	container.add_child(scene)
+
+func show_health_scene():
+	var scene = load("res://Scenes/HealthScene.tscn").instance()
+	container.add_child(scene)
+	scene.show_health(health)
+	yield (scene, "on_finished")
 
 func _on_game_finished(didWin):
 	if didWin:
 		print("You won :)")
 	else:
+		health -= 1
 		print("You Lost :(")
 	

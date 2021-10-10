@@ -16,18 +16,20 @@ load_path = "res://.import/paddle.png-1d2a28e983477361da92398ef0d5efd1.stex"
 [node name="Pong" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="Paddle" type="KinematicBody2D" parent="."]
-position = Vector2( 139.081, 321.086 )
+[node name="Node2D" type="Node2D" parent="."]
 scale = Vector2( 0.5, 0.5 )
+
+[node name="Paddle" type="KinematicBody2D" parent="Node2D"]
+position = Vector2( 139.081, 321.086 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Paddle"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Paddle"]
+[node name="Sprite" type="Sprite" parent="Node2D/Paddle"]
 texture = SubResource( 2 )
 
 [node name="LeftWall" parent="." instance=ExtResource( 2 )]
@@ -46,7 +48,6 @@ position = Vector2( 509.99, -24.8045 )
 scale = Vector2( 20.84, 0.2 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [node name="EndTimer" type="Timer" parent="."]
